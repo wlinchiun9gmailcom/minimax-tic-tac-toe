@@ -1,0 +1,26 @@
+##This sequence happens when a player gets three in a row.
+def end_game_sequence(): 
+    if winner == "PLAYER1" or winner == "PLAYER2" or winner == "TIE":
+        Board.point_tracker(winner)
+        if winner == "PLAYER2": 
+            t.sleep(3)
+            print("The AI won!")
+        if winner == "TIE": 
+            t.sleep(3)
+            print("It was a tie!")
+        t.sleep(3)
+        print("PLAYER has won " + str(Board.PLAYER1wins) + " game(s). AI has won " + str(Board.PLAYER2wins) + " game(s).")
+        t.sleep(3)
+        play_again = input("Enter 'X' to exit the game, or 'O' to continue. ")
+        print(" --------------------------------------------------------- ")
+        if play_again == "X":
+            global playing
+            playing = False
+        else:
+            t.sleep(3)
+            Board.create_board()
+            print_board(Board.board)
+            global message_num 
+            message_num = 0
+            t.sleep(2)
+            print("Minimax AI #34600A: " + "\"" + "Make your move, mortal. In Cartesian coordinates, please." + "\"")
