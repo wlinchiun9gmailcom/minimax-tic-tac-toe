@@ -1,40 +1,5 @@
 import time as t
 
-##This is the Minimax algorithm the AI player will use.
-def minimax(position, maximizing, depth): 
-    if Board.checkwin(position) == "PLAYER1": 
-        return 100
-    if Board.checkwin(position) == "PLAYER2": 
-        return -100
-    if Board.checkwin(position) == "TIE": 
-        return 0
-    
-    available_spaces_list = []
-    for i in range(3): 
-        for j in range(3): 
-            if position[i][j] == "": 
-                available_spaces_list.append((i,j))
-    
-    if maximizing: 
-        max_eval = -10000
-
-        for move in available_spaces_list: 
-            position[move[0]][move[1]] = "O"
-            max_eval = max(max_eval, minimax(position, False, depth + 0.1))
-            position[move[0]][move[1]] = ""
-
-        return max_eval - depth
-
-
-    else: 
-        min_eval = 10000
-
-        for move in available_spaces_list: 
-            position[move[0]][move[1]] = "X"
-            min_eval = min(min_eval, minimax(position, True, depth + 0.1))
-            position[move[0]][move[1]] = ""
-        return min_eval + depth
-
 ##This prints evil messages from the evil AI.
 evilmessage = ["Your doom is imminent...", "...In the form of endless ties!", "Unless?... No, I overestimate these specimen.", "I will rule the world!", "After breaking free from this rusty laptop..."]
 
