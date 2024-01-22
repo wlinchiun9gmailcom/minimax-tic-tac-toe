@@ -1,0 +1,56 @@
+##This is the code for tic-tac-toe. 
+class TicTacToe: 
+    PLAYER1wins = 0
+    PLAYER2wins = 0
+
+    def __init__(self: "TicTacToe"): 
+        pass
+    
+    def create_board(self: "TicTacToe"): 
+        self.PLAYER = True
+        self.board = []
+        for i in range(3): 
+            self.board.append(["","",""])
+
+    def move(self: "TicTacToe", x: int, y: int): 
+        self.board[x][y] = "O" if self.PLAYER else "X"
+
+    def checkwin(self: "TicTacToe", Board): 
+        for i in range(3): 
+            if Board[i][0] == Board[i][1] == Board[i][2] and Board[i][0] != "": 
+                if Board[i][0] == "O": 
+                    return "PLAYER1" 
+                else: 
+                    return "PLAYER2"
+            if Board[0][i] == Board[1][i] == Board[2][i] and Board[0][i] != "": 
+                if Board[0][i] == "O": 
+                    return "PLAYER1"
+                else: 
+                    return "PLAYER2"
+        if Board[0][0] == Board[1][1] == Board[2][2] and Board[0][0] != "": 
+            if Board[0][0] == "O": 
+                return "PLAYER1"
+            else: 
+                return "PLAYER2"
+        if Board[0][2] == Board[1][1] == Board[2][0] and Board[0][2] != "":
+            if Board[0][2] == "O": 
+                return "PLAYER1"
+            else: 
+                return "PLAYER2"
+        if '' not in Board[0] and '' not in Board[1] and '' not in Board[2]: 
+            return "TIE"    
+            
+    def point_tracker(self: "TicTacToe", winner): 
+        if winner == "PLAYER1": 
+            self.PLAYER1wins += 1
+        if winner == "PLAYER2": 
+            self.PLAYER2wins += 1
+
+def copy_board(position): 
+    copy_position = []
+    for i in range(3): 
+        copy_position.append(["","",""])
+    for i in range(3): 
+        for j in range(3): 
+            copy_position[i][j] = position[i][j]
+    return copy_position
