@@ -1,5 +1,10 @@
 import time as t
-
+import Minimax
+import TicTacToe
+import end-game-sequence
+import end-game-sequence
+import evil-messages
+import misc-functions
 ##This code carries out the game
 Board = TicTacToe()
 Board.create_board()
